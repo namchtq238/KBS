@@ -9,22 +9,31 @@ import javax.persistence.*;
 @Data
 public class SacThai {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idsacthai;
-    @OneToOne(targetEntity = Cam.class)
+    @ManyToOne(targetEntity = Cam.class)
+    @JoinColumn(name = "idcam")
     private Cam cam;
-    @OneToOne(targetEntity = LongMay.class)
+    @ManyToOne(targetEntity = LongMay.class)
+    @JoinColumn(name = "idlongmay")
     private LongMay longMay;
-    @OneToOne(targetEntity = Ma.class)
+    @ManyToOne(targetEntity = Ma.class)
+    @JoinColumn(name = "idma")
     private Ma ma;
-    @OneToOne(targetEntity = Mat.class)
+    @ManyToOne(targetEntity = Mat.class)
+    @JoinColumn(name = "idmat")
     private Mat mat;
-    @OneToOne(targetEntity = Moi.class)
+    @ManyToOne(targetEntity = Moi.class)
+    @JoinColumn(name = "idmoi")
     private Moi moi;
-    @OneToOne(targetEntity = Mui.class)
+    @ManyToOne(targetEntity = Mui.class)
+    @JoinColumn(name = "idmui")
     private Mui mui;
-    @OneToOne(targetEntity = Rang.class)
+    @ManyToOne(targetEntity = Rang.class)
+    @JoinColumn(name = "idrang")
     private Rang rang;
-    @OneToOne(targetEntity = Tran.class)
+    @ManyToOne(targetEntity = Tran.class)
+    @JoinColumn(name = "idtran")
     private Tran tran;
     private String mota;
 }
