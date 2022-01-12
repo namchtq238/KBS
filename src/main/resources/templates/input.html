@@ -1,10 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>KBS</title>
+    <link rel="stylesheet" th:href="@{css/bootstrap.css}">
+
 </head>
 <body>
-  <h1>INPUT</h1>
+<form action="@{/process}">
+    <div th:object="cam" class="">
+        <select>
+            <option th:each="" th:value="" th:text=""></option>
+        </select>
+    </div>
+    <input type="submit" th:value="submit">
+</form>
 </body>
 </html>
