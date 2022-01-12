@@ -5,6 +5,9 @@
     <title>KBS</title>
 </head>
 <body>
-
+<th:block th:each="sacthai : ${listSacThai}">
+    <li th:utext="${sacthai.sacThai.mota}">..</li>
+    <li th:utext="${sacthai.similar}">..</li>
+</th:block>
 </body>
 </html>
