@@ -71,9 +71,24 @@ public class MainController {
         System.out.println(sacThai.toString());
         List<SacThaiSimilar> sacThaiSimilars = sacThaiService.sacThaiSimilar(sacThai);
         List<SacThaiSimilar> sacThaiShow = new ArrayList<>();
-        for(int i = 1; i<=5; i++){
-            sacThaiShow.add(sacThaiSimilars.get(i));
-        }
+//        for(int i = 1; i<=5; i++){
+//            sacThaiShow.add(sacThaiSimilars.get(i));
+//        }
+        List<SacThaiSimilar> listTest = new ArrayList<>();
+        for(SacThaiSimilar s : sacThaiSimilars){
+            boolean check = false;
+            for(SacThaiSimilar similar : listTest){
+                if(s.getSacThai().getMota().trim().equals(similar.getSacThai().getMota().trim())){
+                    check = true;
+                    break;
+                }
+            }
+            if(!check){
+                listTest.add(s);
+            }
+            }
+        sacThaiShow = listTest.subList(0,4);
+        System.out.println(listTest.size());
         model.addAttribute("listSacThai", sacThaiShow);
         SacThaiSimilar sacThaiSimilar = sacThaiSimilars.get(0);
         sacThai.setMota(sacThaiSimilar.getSacThai().getMota());
