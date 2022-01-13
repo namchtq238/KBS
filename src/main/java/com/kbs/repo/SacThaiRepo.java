@@ -1,7 +1,6 @@
 package com.kbs.repo;
 
 import com.kbs.model.SacThai;
-import com.kbs.model.SacThaiSimilar;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

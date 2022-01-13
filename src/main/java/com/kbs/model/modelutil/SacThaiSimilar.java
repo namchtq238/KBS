@@ -1,5 +1,6 @@
-package com.kbs.model;
+package com.kbs.model.modelutil;
 
+import com.kbs.model.SacThai;
 import lombok.Data;
 
 @Data

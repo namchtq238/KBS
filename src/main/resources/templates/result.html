@@ -1,13 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>KBS</title>
+    <link rel="stylesheet" th:href="@{css/bootstrap.css}">
+
 </head>
 <body>
 <th:block th:each="sacthai : ${listSacThai}">
-    <li th:utext="${sacthai.sacThai.mota}">..</li>
-    <li th:utext="${sacthai.similar}">..</li>
+<!--    <li th:utext="${sacthai.sacThai.mota}">..</li>-->
+<!--    <li th:utext="${sacthai.similar}">..</li>-->
+    <li th:utext="${sacthai}">..</li>
 </th:block>
 </body>
 </html>
