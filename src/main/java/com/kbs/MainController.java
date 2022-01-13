@@ -37,10 +37,6 @@ public class MainController {
     @Autowired
     private TranRepo tranRepo;
     @Autowired
-    private SacThaiRepo sacThaiRepo;
-    @Autowired
-    private TuongDongCamRepo tuongDongCamRepo;
-    @Autowired
     private SacThaiService sacThaiService;
     public MainController(SacThaiService sacThaiService){
         this.sacThaiService = sacThaiService;
@@ -84,7 +80,6 @@ public class MainController {
         if(sacThaiSimilar.getSimilar()<1) sacThaiService.saveSacThai(sacThai);
         model.addAttribute("sacThaiOutput", sacThaiSimilar);
         sacThaiSimilar.getSimilar();
-        System.err.println(sacThaiSimilars.toString());
         return "result";
     };
 
