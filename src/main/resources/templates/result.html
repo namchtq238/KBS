@@ -7,17 +7,15 @@
 
 </head>
 <body>
-<th:block th:object = "${sacThaiOutput}">
-    <ul>
-        <li th:utext="*{sacThaiOutput.getSacThai().getMota()}">..</li>
-        <li th:utext="*{sacThaiOutput.getSimilar()}">..</li>
-    </ul>
-</th:block><hr>
+<p th:text="${sacThaiOutput.sacThai.mota}"></p>
+<p th:text="${sacThaiOutput.similar}"></p>
+<hr>
 <th:block th:each="sacthai : ${listSacThai}">
     <li th:utext="${sacthai.sacThai.mota}">..</li>
     <li th:utext="${sacthai.similar}">..</li>
 <!--    <li th:utext="${sacthai}">..</li>-->
     <p th:utext = "${a}"></p>
 </th:block>
+<a th:href="@{/}" class="btn btn-success" >Return to index</a>
 </body>
 </html>
