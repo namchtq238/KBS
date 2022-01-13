@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 public interface SacThaiService {
-    List<SacThaiSimilar> sacThaiSimilar(int icam_id,int ilong_may_id,int ima_id,int imat_id,int imoi_id,int imui_id,int irang_id,int itran_id);
-    List<Float> tinhDoTuongDong(int cam_id,int long_may_id,int ma_id,int mat_id,int moi_id,int mui_id,int rang_id,int tran_id);
+    List<SacThaiSimilar> sacThaiSimilar();
+    List<Float> tinhDoTuongDong(int cam_id);
     boolean saveSacThai(SacThai sacThai);
 }

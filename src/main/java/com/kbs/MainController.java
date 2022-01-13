@@ -87,7 +87,8 @@ public class MainController {
     public String tinhDoTuongDong(Model model){
         System.err.println("-----------------------------------------------");
         System.err.println();
-        model.addAttribute("listSacThai");
+        List<Float> show = sacThaiService.tinhDoTuongDong(1);
+        model.addAttribute("listSacThai",show);
         return "result";
     }
 }

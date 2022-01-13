@@ -1,5 +1,6 @@
 package com.kbs.model.modelsimi;
 
+import com.kbs.model.Cam;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -14,7 +15,8 @@ public class TuongDongCam {
     private Integer idTuongDong;
     @Column(name = "thuoc_tinh_vao")
     private Integer thuocTinhVao;
-    @Column(name = "thuoc_tinh_co_san")
+    @ManyToOne(targetEntity = Cam.class)
+    @JoinColumn(name = "thuoc_tinh_co_san")
     private Integer thuocTinhCoSan;
     @Column(name = "gia_tri")
     private Float giaTri;

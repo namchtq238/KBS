@@ -1,8 +1,8 @@
 package com.kbs.service.imp;
-
 import com.kbs.model.SacThai;
-import com.kbs.model.modelsimi.*;
+import com.kbs.model.modelsimi.TuongDongCam;
 import com.kbs.model.modelutil.SacThaiSimilar;
+import com.kbs.repo.CamRepo;
 import com.kbs.repo.SacThaiRepo;
 import com.kbs.repo.tuongdongrepo.*;
 import com.kbs.service.SacThaiService;
@@ -15,6 +15,8 @@ import java.util.*;
 public class SacThaiServiceImp implements SacThaiService {
     @Autowired
     private SacThaiRepo sacThaiRepo;
+    @Autowired
+    private CamRepo camRepo;
     @Autowired
     private TuongDongCamRepo tuongDongCamRepo;
     @Autowired
@@ -36,31 +38,31 @@ public class SacThaiServiceImp implements SacThaiService {
         this.tuongDongCamRepo = tuongDongCamRepo;
     }
     @Override
-    public List<SacThaiSimilar> sacThaiSimilar(int icam_id, int ilong_may_id, int ima_id, int imat_id, int imoi_id, int imui_id, int irang_id, int itran_id) {
+    public List<SacThaiSimilar> sacThaiSimilar() {
         List<SacThai> listSacThai = sacThaiRepo.findAll();
         List<SacThaiSimilar> listSacThaiSimilars = new ArrayList<>();
         for(SacThai sacThai:listSacThai){
             SacThaiSimilar sacThaiSimilar = new SacThaiSimilar();
             sacThaiSimilar.setSacThai(sacThai);
-            sacThaiSimilar.setSimilar(sacThaiRepo.sacThaiSimilar(icam_id,ilong_may_id,ima_id,imat_id,imoi_id,imui_id,irang_id,itran_id).get(0));
+            sacThaiSimilar.setSimilar(sacThaiRepo.sacThaiSimilar().get(0));
             listSacThaiSimilars.add(sacThaiSimilar);
         }
         return listSacThaiSimilars;
     }
 
     @Override
-    public List<Float> tinhDoTuongDong(int cam_id,int long_may_id,int ma_id,int mat_id,int moi_id,int mui_id,int rang_id,int tran_id) {
-        Hashtable<Integer, Optional<TuongDongCam>> caseProblemCam = new Hashtable<>();
-        System.err.println(caseProblemCam);
-        Set<Integer> keySet = caseProblemCam.keySet();
+    public List<Float> tinhDoTuongDong(int cam_id) {
+        Hashtable<Integer,Float> cam = new Hashtable<>();
+        cam.put(camRepo.getById(cam_id).getTrongSo(), tuongDongCamRepo.getById(cam_id).getGiaTri());
+        Set<Integer> keys = cam.keySet();
         float tong = 0;
         List<Float> tuongDongCam = new ArrayList<>();
-        for(Integer key : keySet){
+        for(Integer key : keys){
             for(TuongDongCam i : tuongDongCamRepo.findAll()){
-                tuongDongCam.add(i.getGiaTri() * key);
+            tong += tuongDongCamRepo.getById(cam_id).getGiaTri()*key;
+            tuongDongCam.add(tong);
             }
         }
-        System.err.println(tuongDongCam);
         return tuongDongCam;
     }
 
