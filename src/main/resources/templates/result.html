@@ -7,6 +7,12 @@
 
 </head>
 <body>
+<th:block th:object = "${sacThaiOutput}">
+    <ul>
+        <li th:utext="*{sacThaiOutput.getSacThai().getMota()}">..</li>
+        <li th:utext="*{sacThaiOutput.getSimilar()}">..</li>
+    </ul>
+</th:block><hr>
 <th:block th:each="sacthai : ${listSacThai}">
     <li th:utext="${sacthai.sacThai.mota}">..</li>
     <li th:utext="${sacthai.similar}">..</li>

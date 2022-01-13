@@ -63,13 +63,10 @@ public class SacThaiServiceImp implements SacThaiService {
         tong += sacThaiDb.getMui().getTrongSo()*doTuongDongMui(sacThaiDb.getMui().getId(),sacThaiInput.getMui().getId());
         tong += sacThaiDb.getRang().getTrongSo()*doTuongDongRang(sacThaiDb.getRang().getId(),sacThaiInput.getRang().getId());
         tong += sacThaiDb.getTran().getTrongSo()*doTuongDongTran(sacThaiDb.getTran().getId(),sacThaiInput.getTran().getId());
-        System.err.println(tong);
-        System.err.println("------------------------------------------");
         int tongTrongSo = 0;
         tongTrongSo = sacThaiDb.getCam().getTrongSo()+sacThaiDb.getLongMay().getTrongSo()+
                 sacThaiDb.getMa().getTrongSo()+sacThaiDb.getMat().getTrongSo()+sacThaiDb.getMoi().getTrongSo()
                 +sacThaiDb.getMui().getTrongSo()+sacThaiDb.getRang().getTrongSo()+sacThaiDb.getTran().getTrongSo();
-        System.err.println(tongTrongSo);
         return new SacThaiSimilar(sacThaiDb, tong/tongTrongSo);
     }
 

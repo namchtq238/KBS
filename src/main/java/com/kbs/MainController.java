@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
 
@@ -73,25 +74,18 @@ public class MainController {
     public String process(@ModelAttribute SacThai sacThai, Model model){
         System.out.println(sacThai.toString());
         List<SacThaiSimilar> sacThaiSimilars = sacThaiService.sacThaiSimilar(sacThai);
-        model.addAttribute("listSacThai", sacThaiSimilars);
+        List<SacThaiSimilar> sacThaiShow = new ArrayList<>();
+        for(int i = 1; i<=5; i++){
+            sacThaiShow.add(sacThaiSimilars.get(i));
+        }
+        model.addAttribute("listSacThai", sacThaiShow);
+        SacThaiSimilar sacThaiSimilar = sacThaiSimilars.get(0);
+        sacThai.setMota(sacThaiSimilar.getSacThai().getMota());
+        if(sacThaiSimilar.getSimilar()<1) sacThaiService.saveSacThai(sacThai);
+        model.addAttribute("sacThaiOutput", sacThaiSimilar);
+        sacThaiSimilar.getSimilar();
         System.err.println(sacThaiSimilars.toString());
         return "result";
     };
-//    @GetMapping("/test")
-//    public String sacThaiSimilar(SacThai sacThai, Model model){
-//        sacThai = new SacThai();
-//        List<SacThaiSimilar> sacThaiSimilars = sacThaiService.sacThaiSimilar(sacThai);
-//        model.addAttribute("listSacThai", sacThaiSimilars);
-//        return "result";
-//    }
-    @GetMapping("/test1")
-    public String tinhDoTuongDong(Model model){
-        System.err.println("-----------------------------------------------");
-        System.err.println();
 
-        float a = sacThaiService.doTuongDongMa(1,2);
-        model.addAttribute("a",a);
-        System.out.println(a);
-        return "result";
-    }
 }
