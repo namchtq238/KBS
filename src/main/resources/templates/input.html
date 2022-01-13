@@ -7,13 +7,13 @@
 
 </head>
 <body>
-<form th:action="@{/process}" method="post">
+<form th:action="@{/process}" method="post" th:object="${sacthai}">
     <div class="">
         <table>
             <tr>
                 <td>Sắc thái cằm:</td>
                 <td>
-                    <select>
+                    <select th:field="*{cam}">
                         <option th:each="i : ${cam}" th:value="${i.id}" th:text="${i.mota}"></option>
                     </select>
                 </td>
@@ -21,7 +21,7 @@
             <tr>
                 <td>Sắc thái lông mày:</td>
                 <td>
-                    <select>
+                    <select th:field="*{longMay}">
                         <option th:each="i : ${longmay}" th:value="${i.id}" th:text="${i.mota}"></option>
                     </select>
                 </td>
@@ -29,7 +29,7 @@
             <tr>
                 <td>Sắc thái má:</td>
                 <td>
-                    <select>
+                    <select th:field="*{ma}">
                         <option th:each="i : ${ma}" th:value="${i.id}" th:text="${i.mota}"></option>
                     </select>
                 </td>
@@ -37,7 +37,7 @@
             <tr>
                 <td>Sắc thái mắt:</td>
                 <td>
-                    <select>
+                    <select th:field="*{mat}">
                         <option th:each="i : ${mat}" th:value="${i.id}" th:text="${i.mota}"></option>
                     </select>
                 </td>
@@ -45,7 +45,7 @@
             <tr>
                 <td>Sắc thái môi:</td>
                 <td>
-                    <select>
+                    <select th:field="*{moi}">
                         <option th:each="i : ${moi}" th:value="${i.id}" th:text="${i.mota}"></option>
                     </select>
                 </td>
@@ -53,7 +53,7 @@
             <tr>
                 <td>Sắc thái mũi:</td>
                 <td>
-                    <select>
+                    <select th:field="*{mui}">
                         <option th:each="i : ${mui}" th:value="${i.id}" th:text="${i.mota}"></option>
                     </select>
                 </td>
@@ -61,7 +61,7 @@
             <tr>
                 <td>Sắc thái răng: </td>
                 <td>
-                    <select>
+                    <select th:field="*{rang}">
                         <option th:each="i : ${rang}" th:value="${i.id}" th:text="${i.mota}"></option>
                     </select>
                 </td>
@@ -69,7 +69,7 @@
             <tr>
                 <td>Sắc thái trán: </td>
                 <td>
-                    <select>
+                    <select th:field="*{tran}">
                         <option th:each="i : ${tran}" th:value="${i.id}" th:text="${i.mota}"></option>
                     </select>
                 </td>

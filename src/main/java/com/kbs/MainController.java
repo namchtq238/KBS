@@ -71,6 +71,7 @@ public class MainController {
     }
     @PostMapping("/process")
     public String process(@ModelAttribute SacThai sacThai, Model model){
+        System.out.println(sacThai.toString());
         List<SacThaiSimilar> sacThaiSimilars = sacThaiService.sacThaiSimilar(sacThai);
         model.addAttribute("listSacThai", sacThaiSimilars);
         System.err.println(sacThaiSimilars.toString());
