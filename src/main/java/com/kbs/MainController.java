@@ -87,12 +87,12 @@ public class MainController {
                 listTest.add(s);
             }
             }
-        if(listTest.size()<4) {
+        if(listTest.size()<6) {
             model.addAttribute("listSacThai", listTest);
         }
 //        System.out.println(listTest.size());
         else{
-            sacThaiShow = listTest.subList(0,4);
+            sacThaiShow = listTest.subList(1,6);
             model.addAttribute("listSacThai", sacThaiShow);
             SacThaiSimilar sacThaiSimilar = sacThaiSimilars.get(0);
             sacThai.setMota(sacThaiSimilar.getSacThai().getMota());
