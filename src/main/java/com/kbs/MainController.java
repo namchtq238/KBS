@@ -87,14 +87,19 @@ public class MainController {
                 listTest.add(s);
             }
             }
-        sacThaiShow = listTest.subList(0,4);
-        System.out.println(listTest.size());
-        model.addAttribute("listSacThai", sacThaiShow);
-        SacThaiSimilar sacThaiSimilar = sacThaiSimilars.get(0);
-        sacThai.setMota(sacThaiSimilar.getSacThai().getMota());
-        if(sacThaiSimilar.getSimilar()<1) sacThaiService.saveSacThai(sacThai);
-        model.addAttribute("sacThaiOutput", sacThaiSimilar);
-        sacThaiSimilar.getSimilar();
+        if(listTest.size()<4) {
+            model.addAttribute("listSacThai", listTest);
+        }
+//        System.out.println(listTest.size());
+        else{
+            sacThaiShow = listTest.subList(0,4);
+            model.addAttribute("listSacThai", sacThaiShow);
+            SacThaiSimilar sacThaiSimilar = sacThaiSimilars.get(0);
+            sacThai.setMota(sacThaiSimilar.getSacThai().getMota());
+            if(sacThaiSimilar.getSimilar()<1) sacThaiService.saveSacThai(sacThai);
+            model.addAttribute("sacThaiOutput", sacThaiSimilar);
+            sacThaiSimilar.getSimilar();
+        }
         return "result";
     };
 

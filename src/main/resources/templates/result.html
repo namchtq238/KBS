@@ -13,8 +13,6 @@
 <th:block th:each="sacthai : ${listSacThai}">
     <li th:utext="${sacthai.sacThai.mota}">..</li>
     <li th:utext="${sacthai.similar}">..</li>
-<!--    <li th:utext="${sacthai}">..</li>-->
-    <p th:utext = "${a}"></p>
 </th:block>
 <a th:href="@{/}" class="btn btn-success" >Return to index</a>
 </body>
