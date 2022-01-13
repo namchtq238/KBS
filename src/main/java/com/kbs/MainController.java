@@ -78,7 +78,7 @@ public class MainController {
         for(SacThaiSimilar s : sacThaiSimilars){
             boolean check = false;
             for(SacThaiSimilar similar : listTest){
-                if(s.getSacThai().getMota().trim().equals(similar.getSacThai().getMota().trim())){
+                if(s.getSacThai().getMota().trim().equalsIgnoreCase(similar.getSacThai().getMota().trim())){
                     check = true;
                     break;
                 }
@@ -90,7 +90,6 @@ public class MainController {
         if(listTest.size()<6) {
             model.addAttribute("listSacThai", listTest);
         }
-//        System.out.println(listTest.size());
         else{
             sacThaiShow = listTest.subList(1,6);
             model.addAttribute("listSacThai", sacThaiShow);
@@ -99,6 +98,10 @@ public class MainController {
             if(sacThaiSimilar.getSimilar()<1) sacThaiService.saveSacThai(sacThai);
             model.addAttribute("sacThaiOutput", sacThaiSimilar);
             sacThaiSimilar.getSimilar();
+        }
+        System.err.println(listTest.size());
+        for(SacThaiSimilar i : listTest) {
+            System.err.println(i.getSacThai().getIdsacthai()+"    -----   "+i.getSacThai().getMota());
         }
         return "result";
     };
