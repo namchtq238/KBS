@@ -6,5 +6,10 @@ import lombok.Data;
 @Data
 public class SacThaiSimilar {
     SacThai sacThai;
-    float similar;
+    Float similar;
+
+    public SacThaiSimilar(SacThai sacThai, Float similar) {
+        this.sacThai = sacThai;
+        this.similar = similar;
+    }
 }

@@ -37,33 +37,80 @@ public class SacThaiServiceImp implements SacThaiService {
         this.sacThaiRepo = sacThaiRepo;
         this.tuongDongCamRepo = tuongDongCamRepo;
     }
+
     @Override
-    public List<SacThaiSimilar> sacThaiSimilar() {
-        List<SacThai> listSacThai = sacThaiRepo.findAll();
-        List<SacThaiSimilar> listSacThaiSimilars = new ArrayList<>();
-        for(SacThai sacThai:listSacThai){
-            SacThaiSimilar sacThaiSimilar = new SacThaiSimilar();
-            sacThaiSimilar.setSacThai(sacThai);
-            sacThaiSimilar.setSimilar(sacThaiRepo.sacThaiSimilar().get(0));
-            listSacThaiSimilars.add(sacThaiSimilar);
+    public List<SacThaiSimilar> sacThaiSimilar(SacThai sacThaiInput) {
+        List<SacThai> sacThaiList = sacThaiRepo.findAll();
+        List<SacThaiSimilar> sacThaiSimilars = new ArrayList<>();
+        for(SacThai s:sacThaiList){
+            sacThaiSimilars.add(tinhDoTuongDong(s,sacThaiInput));
         }
-        return listSacThaiSimilars;
+        Collections.sort(sacThaiSimilars, (c1, c2) ->
+        {
+            return c1.getSimilar() >= c2.getSimilar() ? -1 : 1;
+        });
+        return sacThaiSimilars;
     }
 
     @Override
-    public List<Float> tinhDoTuongDong(int cam_id) {
-        Hashtable<Integer,Float> cam = new Hashtable<>();
-        cam.put(camRepo.getById(cam_id).getTrongSo(), tuongDongCamRepo.getById(cam_id).getGiaTri());
-        Set<Integer> keys = cam.keySet();
+    public SacThaiSimilar tinhDoTuongDong(SacThai sacThaiDb, SacThai sacThaiInput) {
         float tong = 0;
-        List<Float> tuongDongCam = new ArrayList<>();
-        for(Integer key : keys){
-            for(TuongDongCam i : tuongDongCamRepo.findAll()){
-            tong += tuongDongCamRepo.getById(cam_id).getGiaTri()*key;
-            tuongDongCam.add(tong);
-            }
-        }
-        return tuongDongCam;
+        tong += sacThaiDb.getCam().getTrongSo()*doTuongDongCam(sacThaiDb.getCam().getId(),sacThaiInput.getCam().getId());
+        tong += sacThaiDb.getLongMay().getTrongSo()*doTuongDongLongMay(sacThaiDb.getLongMay().getId(),sacThaiInput.getLongMay().getId());
+        tong += sacThaiDb.getMa().getTrongSo()*doTuongDongMa(sacThaiDb.getMa().getId(),sacThaiInput.getMa().getId());
+        tong += sacThaiDb.getMat().getTrongSo()*doTuongDongMat(sacThaiDb.getMat().getId(),sacThaiInput.getMat().getId());
+        tong += sacThaiDb.getMoi().getTrongSo()*doTuongDongMoi(sacThaiDb.getMoi().getId(),sacThaiInput.getMoi().getId());
+        tong += sacThaiDb.getMui().getTrongSo()*doTuongDongMui(sacThaiDb.getMui().getId(),sacThaiInput.getMui().getId());
+        tong += sacThaiDb.getRang().getTrongSo()*doTuongDongRang(sacThaiDb.getRang().getId(),sacThaiInput.getRang().getId());
+        tong += sacThaiDb.getTran().getTrongSo()*doTuongDongTran(sacThaiDb.getTran().getId(),sacThaiInput.getTran().getId());
+        System.err.println(tong);
+        System.err.println("------------------------------------------");
+        int tongTrongSo = 0;
+        tongTrongSo = sacThaiDb.getCam().getTrongSo()+sacThaiDb.getLongMay().getTrongSo()+
+                sacThaiDb.getMa().getTrongSo()+sacThaiDb.getMat().getTrongSo()+sacThaiDb.getMoi().getTrongSo()
+                +sacThaiDb.getMui().getTrongSo()+sacThaiDb.getRang().getTrongSo()+sacThaiDb.getTran().getTrongSo();
+        System.err.println(tongTrongSo);
+        return new SacThaiSimilar(sacThaiDb, tong/tongTrongSo);
+    }
+
+    @Override
+    public Float doTuongDongCam(int idDb, int idInput) {
+        return tuongDongCamRepo.getGiaTri(idDb, idInput);
+    }
+
+    @Override
+    public Float doTuongDongLongMay(int idDb, int idInput) {
+        return tuongDongLongMayRepo.getGiaTri(idDb, idInput);
+    }
+
+    @Override
+    public Float doTuongDongMa(int idDb, int idInput) {
+        return tuongDongMaRepo.getGiaTri(idDb, idInput);
+    }
+
+    @Override
+    public Float doTuongDongMat(int idDb, int idInput) {
+        return tuongDongMatRepo.getGiaTri(idDb, idInput);
+    }
+
+    @Override
+    public Float doTuongDongMoi(int idDb, int idInput) {
+        return tuongDongMoiRepo.getGiaTri(idDb, idInput);
+    }
+
+    @Override
+    public Float doTuongDongMui(int idDb, int idInput) {
+        return tuongDongMuiRepo.getGiaTri(idDb, idInput);
+    }
+
+    @Override
+    public Float doTuongDongRang(int idDb, int idInput) {
+        return tuongDongRangRepo.getGiaTri(idDb, idInput);
+    }
+
+    @Override
+    public Float doTuongDongTran(int idDb, int idInput) {
+        return tuongDongTranRepo.getGiaTri(idDb, idInput);
     }
 
     @Override
