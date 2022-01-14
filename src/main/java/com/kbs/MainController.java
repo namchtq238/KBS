@@ -1,10 +1,8 @@
 package com.kbs;
 
 import com.kbs.model.*;
-import com.kbs.model.modelsimi.TuongDongCam;
 import com.kbs.model.modelutil.SacThaiSimilar;
 import com.kbs.repo.*;
-import com.kbs.repo.tuongdongrepo.TuongDongCamRepo;
 import com.kbs.service.SacThaiService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,10 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
-import java.util.Hashtable;
 import java.util.List;
 
 @Controller

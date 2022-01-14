@@ -1,6 +1,6 @@
 package com.kbs.service.imp;
+
 import com.kbs.model.SacThai;
-import com.kbs.model.modelsimi.TuongDongCam;
 import com.kbs.model.modelutil.SacThaiSimilar;
 import com.kbs.repo.CamRepo;
 import com.kbs.repo.SacThaiRepo;
@@ -9,8 +9,9 @@ import com.kbs.service.SacThaiService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 @Service
 public class SacThaiServiceImp implements SacThaiService {
