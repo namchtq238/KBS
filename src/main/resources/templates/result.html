@@ -11,81 +11,104 @@
     <div class="row">
         <h4 class="text-lg-center">Kết quả</h4>
         <div class="col-6 d-flex justify-content-center">
-            <table class="table table-bordered w-75" th:object="${sacThaiInput}">
-                <thead>
-                <tr>
-                    <th class="text-lg-center fs-6">Sắc thái bộ phận</th>
-                    <th class="text-lg-center fs-6">Đầu vào</th>
-                </tr>
-                </thead>
-                <tr>
-                    <td class="text-lg-center fs-6">Sắc thái cằm</td>
-                    <td class="text-lg-center fs-6" th:text="${sacThaiInput.cam.mota}"></td>
-                </tr>
-                <tr>
-                    <td class="text-lg-center fs-6">Sắc thái lông mày</td>
-                    <td class="text-lg-center fs-6" th:text="${sacThaiInput.longMay.mota}"></td>
-                </tr>
-                <tr>
-                    <td class="text-lg-center fs-6">Sắc thái má</td>
-                    <td class="text-lg-center fs-6" th:text="${sacThaiInput.ma.mota}"></td>
-                </tr>
-                <tr>
-                    <td class="text-lg-center fs-6">Sắc thái mắt</td>
-                    <td class="text-lg-center fs-6" th:text="${sacThaiInput.mat.mota}"></td>
-                </tr>
-                <tr>
-                    <td class="text-lg-center fs-6">Sắc thái môi</td>
-                    <td class="text-lg-center fs-6" th:text="${sacThaiInput.moi.mota}"></td>
-                </tr>
-                <tr>
-                    <td class="text-lg-center fs-6">Sắc thái mũi</td>
-                    <td class="text-lg-center fs-6" th:text="${sacThaiInput.mui.mota}"></td>
-                </tr>
-                <tr>
-                    <td class="text-lg-center fs-6">Sắc thái răng</td>
-                    <td class="text-lg-center fs-6" th:text="${sacThaiInput.rang.mota}"></td>
-                </tr>
-                <tr>
-                    <td class="text-lg-center fs-6">Sắc thái trán</td>
-                    <td class="text-lg-center fs-6" th:text="${sacThaiInput.tran.mota}"></td>
-                </tr>
-            </table>
+            <div class="d-flex flex-column w-100">
+                <h5 class="text-lg-center">Đầu vào</h5>
+                <table class="table table-bordered w-100" th:object="${sacThaiInput}">
+                    <thead>
+                    <tr>
+                        <th class="text-lg-center fs-6">Sắc thái bộ phận</th>
+                        <th class="text-lg-center fs-6">Đầu vào</th>
+                    </tr>
+                    </thead>
+                    <tr>
+                        <td class="text-lg-center fs-6">Sắc thái cằm</td>
+                        <td class="text-lg-center fs-6" th:text="${sacThaiInput.cam.mota}"></td>
+                    </tr>
+                    <tr>
+                        <td class="text-lg-center fs-6">Sắc thái lông mày</td>
+                        <td class="text-lg-center fs-6" th:text="${sacThaiInput.longMay.mota}"></td>
+                    </tr>
+                    <tr>
+                        <td class="text-lg-center fs-6">Sắc thái má</td>
+                        <td class="text-lg-center fs-6" th:text="${sacThaiInput.ma.mota}"></td>
+                    </tr>
+                    <tr>
+                        <td class="text-lg-center fs-6">Sắc thái mắt</td>
+                        <td class="text-lg-center fs-6" th:text="${sacThaiInput.mat.mota}"></td>
+                    </tr>
+                    <tr>
+                        <td class="text-lg-center fs-6">Sắc thái môi</td>
+                        <td class="text-lg-center fs-6" th:text="${sacThaiInput.moi.mota}"></td>
+                    </tr>
+                    <tr>
+                        <td class="text-lg-center fs-6">Sắc thái mũi</td>
+                        <td class="text-lg-center fs-6" th:text="${sacThaiInput.mui.mota}"></td>
+                    </tr>
+                    <tr>
+                        <td class="text-lg-center fs-6">Sắc thái răng</td>
+                        <td class="text-lg-center fs-6" th:text="${sacThaiInput.rang.mota}"></td>
+                    </tr>
+                    <tr>
+                        <td class="text-lg-center fs-6">Sắc thái trán</td>
+                        <td class="text-lg-center fs-6" th:text="${sacThaiInput.tran.mota}"></td>
+                    </tr>
+                </table>
+            </div>
         </div>
         <div class="col-6 d-flex justify-content-center">
-            <table class="table table-bordered w-75" >
-                <thead>
+            <div class="d-flex flex-column w-100">
+                <h5 class="text-lg-center">Top 5 khả quan nhất</h5>
+                <table class="table table-bordered w-100 h-100">
+                    <thead>
                     <tr>
                         <th class="text-lg-center fs-6">Sắc Thái</th>
                         <th class="text-lg-center fs-6">Độ tương đồng</th>
                     </tr>
-                </thead>
-                <tr th:each="sacthai : ${listSacThai}">
-                    <td class="text-lg-center fs-6" th:utext="${sacthai.sacThai.mota}">..</td>
-                    <td class="text-lg-center fs-6" th:utext="${sacthai.similar}">..</td>
-                </tr>
-            </table>
+                    </thead>
+                    <tr th:each="sacthai : ${listSacThai}">
+                        <td class="text-lg-center fs-6" th:utext="${sacthai.sacThai.mota}">..</td>
+                        <td class="text-lg-center fs-6" th:utext="${sacthai.similar}">..</td>
+                    </tr>
+                </table>
+            </div>
         </div>
     </div>
 
-    <div class="flex-column ">
-        <div class="d-flex justify-content-center">
-            <h4>Kết quả top 1</h4>
-        </div>
-        <div class="d-flex justify-content-center" >
-            <h5 th:text="${sacThaiOutput.sacThai.mota}"></h5>
-        </div>
-        <div class="d-flex justify-content-center">
-            <h5 th:text="${sacThaiOutput.similar}"></h5>
-        </div>
-        <div class="d-flex justify-content-center" th:if="${check==true}">
-            <h6>Đã lưu vào CSDL</h6>
-        </div>
-    </div>
+    <!--    <div class="d-flex flex-column">-->
+    <!--        <div class="d-flex justify-content-center">-->
+    <!--            <h4>Kết quả top 1</h4>-->
+    <!--        </div>-->
+    <!--        <div class="d-flex justify-content-center">-->
+    <!--            <h5 th:text="${sacThaiOutput.sacThai.mota}"></h5>-->
+    <!--        </div>-->
+    <!--        <div class="d-flex justify-content-center">-->
+    <!--            <h5 th:utext="Độ tương đồng: ${sacThaiOutput.similar}"></h5>-->
+    <!--        </div>-->
     <div class="d-flex justify-content-center">
-        <a th:href="@{/}" class="btn btn-success">Return to index</a>
-        <a th:href="@{/input}" class="btn btn-danger">Return to input</a>
+        <table class="table table-bordered w-50">
+            <thead>
+            <tr>
+                <th class="text-lg-center fs-6">Sắc thái lựa chọn</th>
+                <th class="text-lg-center fs-6">Độ tương đồng</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td class="text-lg-center fs-6" th:text="${sacThaiOutput.sacThai.mota}"></td>
+                <td class="text-lg-center fs-6" th:text="${sacThaiOutput.similar}"></td>
+            </tr>
+            </tbody>
+        </table>
+
+
     </div>
+    <div class="d-flex justify-content-center" th:if="${check==true}">
+        <h6>Đã lưu vào CSDL</h6>
+    </div>
+<div class="d-flex justify-content-center">
+    <a th:href="@{/}" class="btn btn-success">Return to index</a>
+    <a th:href="@{/input}" class="btn btn-danger">Return to input</a>
+</div>
 </div>
 </body>
 </html>
