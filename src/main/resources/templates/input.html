@@ -4,79 +4,84 @@
     <meta charset="UTF-8">
     <title>KBS</title>
     <link rel="stylesheet" th:href="@{css/bootstrap.css}">
-
+    <link rel="stylesheet" th:href="@{css/style.css}">
 </head>
 <body>
-<form th:action="@{/process}" method="post" th:object="${sacthai}">
-    <div class="">
-        <table>
-            <tr>
-                <td>Sắc thái cằm:</td>
-                <td>
-                    <select th:field="*{cam}">
-                        <option th:each="i : ${cam}" th:value="${i.id}" th:text="${i.mota}"></option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td>Sắc thái lông mày:</td>
-                <td>
-                    <select th:field="*{longMay}">
-                        <option th:each="i : ${longmay}" th:value="${i.id}" th:text="${i.mota}"></option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td>Sắc thái má:</td>
-                <td>
-                    <select th:field="*{ma}">
-                        <option th:each="i : ${ma}" th:value="${i.id}" th:text="${i.mota}"></option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td>Sắc thái mắt:</td>
-                <td>
-                    <select th:field="*{mat}">
-                        <option th:each="i : ${mat}" th:value="${i.id}" th:text="${i.mota}"></option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td>Sắc thái môi:</td>
-                <td>
-                    <select th:field="*{moi}">
-                        <option th:each="i : ${moi}" th:value="${i.id}" th:text="${i.mota}"></option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td>Sắc thái mũi:</td>
-                <td>
-                    <select th:field="*{mui}">
-                        <option th:each="i : ${mui}" th:value="${i.id}" th:text="${i.mota}"></option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td>Sắc thái răng: </td>
-                <td>
-                    <select th:field="*{rang}">
-                        <option th:each="i : ${rang}" th:value="${i.id}" th:text="${i.mota}"></option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td>Sắc thái trán: </td>
-                <td>
-                    <select th:field="*{tran}">
-                        <option th:each="i : ${tran}" th:value="${i.id}" th:text="${i.mota}"></option>
-                    </select>
-                </td>
-            </tr>
-        </table>
+<div class="container d-flex justify-content-center">
+    <div class="row ">
+        <h3 class="align-text-center">Nhập các giá trị</h3>
+        <form th:action="@{/process}" method="post" th:object="${sacthai}">
+            <table class="table w-100 table-bordered background-table">
+                <tr>
+                    <td class="text-lg-center fs-6">Sắc thái cằm</td>
+                    <td>
+                        <select th:field="*{cam}" class="form-select">
+                            <option th:each="i : ${cam}" th:value="${i.id}" th:text="${i.mota}"></option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-lg-center fs-6">Sắc thái lông mày</td>
+                    <td>
+                        <select th:field="*{longMay}" class="form-select">
+                            <option th:each="i : ${longmay}" th:value="${i.id}" th:text="${i.mota}"></option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-lg-center fs-6">Sắc thái má</td>
+                    <td>
+                        <select th:field="*{ma}" class="form-select">
+                            <option th:each="i : ${ma}" th:value="${i.id}" th:text="${i.mota}"></option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-lg-center fs-6">Sắc thái mắt</td>
+                    <td>
+                        <select th:field="*{mat}" class="form-select">
+                            <option th:each="i : ${mat}" th:value="${i.id}" th:text="${i.mota}"></option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-lg-center fs-6">Sắc thái môi</td>
+                    <td>
+                        <select th:field="*{moi}" class="form-select">
+                            <option th:each="i : ${moi}" th:value="${i.id}" th:text="${i.mota}"></option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-lg-center fs-6">Sắc thái mũi</td>
+                    <td>
+                        <select th:field="*{mui}" class="form-select">
+                            <option th:each="i : ${mui}" th:value="${i.id}" th:text="${i.mota}"></option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-lg-center fs-6">Sắc thái răng</td>
+                    <td>
+                        <select th:field="*{rang}" class="form-select">
+                            <option th:each="i : ${rang}" th:value="${i.id}" th:text="${i.mota}"></option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-lg-center fs-6">Sắc thái trán</td>
+                    <td>
+                        <select th:field="*{tran}" class="form-select">
+                            <option th:each="i : ${tran}" th:value="${i.id}" th:text="${i.mota}"></option>
+                        </select>
+                    </td>
+                </tr>
+            </table>
+            <div class="d-flex justify-content-center">
+                <input type="submit" th:value="submit" class="btn btn-success text-uppercase a">
+            </div>
+        </form>
     </div>
-    <input type="submit" th:value="submit" class="btn btn-success">
-</form>
+</div>
 </body>
 </html>

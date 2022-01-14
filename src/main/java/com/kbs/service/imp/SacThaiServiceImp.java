@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class SacThaiServiceImp implements SacThaiService {
@@ -49,6 +50,7 @@ public class SacThaiServiceImp implements SacThaiService {
         {
             return c1.getSimilar() >= c2.getSimilar() ? -1 : 1;
         });
+        //sacThaiSimilars.stream().sorted(Comparator.comparingDouble(SacThaiSimilar::getSimilar).reversed()).collect(Collectors.toList());
         return sacThaiSimilars;
     }
 

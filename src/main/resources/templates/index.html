@@ -4,24 +4,37 @@
     <meta charset="UTF-8">
     <title>KBS</title>
     <link rel="stylesheet" th:href="@{css/bootstrap.css}">
+    <link rel="stylesheet" th:href="@{css/style.css}">
 </head>
 <body>
-    <div class="container-fluid align-content-md-center">
-        <h1 class="align-self-lg-center">Hệ thống nhận diện sắc thái khuôn mặt</h1>
-        <table>
-            <thead>by</thead>
-            <tbody>
-            <tr>
-                <td>Trần Hoài Nam</td>
-                <td>B18DCCN436</td>
-            </tr>
-            <tr>
-                <td>Trần Nguyên Thịnh</td>
-                <td>B18DCCN645</td>
-            </tr>
-            </tbody>
-        </table>
-        <a class="btn btn-success fw-bold text-uppercase" th:href="@{/input}" th:text="@{bắt đầu}"></a>
+    <div class="container">
+        <div class="row ">
+            <h1 class="align-text-center">Hệ thống nhận diện sắc thái khuôn mặt</h1>
+            <div class="d-flex justify-content-center">
+                <table class="table table-responsive table-bordered w-50">
+                    <thead>
+                    <tr>
+                        <th>Sinh viên</th>
+                        <th>Mã SV</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Trần Hoài Nam</td>
+                        <td>B18DCCN436</td>
+                    </tr>
+                    <tr>
+                        <td>Trần Nguyên Thịnh</td>
+                        <td>B18DCCN645</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+        <div class="d-flex justify-content-center">
+            <a class="btn btn-success fw-bold text-uppercase" th:href="@{/input}" th:text="@{bắt đầu}"></a>
+        </div>
     </div>
 </body>
 </html>

@@ -38,15 +38,18 @@ public class MainController {
     private TranRepo tranRepo;
     @Autowired
     private SacThaiService sacThaiService;
-    public MainController(SacThaiService sacThaiService){
+
+    public MainController(SacThaiService sacThaiService) {
         this.sacThaiService = sacThaiService;
     }
+
     @GetMapping("/")
-    public String getLandingPage(){
+    public String getLandingPage() {
         return "index";
     }
+
     @GetMapping("/input")
-    public String getInputPage(Model model){
+    public String getInputPage(Model model) {
         List<Cam> camList = camRepo.findAll();
         model.addAttribute("cam", camList);
         List<LongMay> longMayList = longMayRepo.findAll();
@@ -66,8 +69,9 @@ public class MainController {
         model.addAttribute("sacthai", new SacThai());
         return "input";
     }
+
     @PostMapping("/process")
-    public String process(@ModelAttribute SacThai sacThai, Model model){
+    public String process(@ModelAttribute SacThai sacThai, Model model) {
         System.out.println(sacThai.toString());
         List<SacThaiSimilar> sacThaiSimilars = sacThaiService.sacThaiSimilar(sacThai);
         List<SacThaiSimilar> sacThaiShow = new ArrayList<>();
@@ -75,35 +79,38 @@ public class MainController {
 //            sacThaiShow.add(sacThaiSimilars.get(i));
 //        }
         List<SacThaiSimilar> listTest = new ArrayList<>();
-        for(SacThaiSimilar s : sacThaiSimilars){
+        for (SacThaiSimilar s : sacThaiSimilars) {
             boolean check = false;
-            for(SacThaiSimilar similar : listTest){
-                if(s.getSacThai().getMota().trim().equalsIgnoreCase(similar.getSacThai().getMota().trim())){
+            for (SacThaiSimilar similar : listTest) {
+                if (s.getSacThai().getMota().trim().equalsIgnoreCase(similar.getSacThai().getMota().trim())) {
                     check = true;
                     break;
                 }
             }
-            if(!check){
+            if (!check) {
                 listTest.add(s);
             }
-            }
-        if(listTest.size()<6) {
-            model.addAttribute("listSacThai", listTest);
         }
-        else{
-            sacThaiShow = listTest.subList(1,6);
+        if (listTest.size() < 6) {
+            model.addAttribute("listSacThai", listTest);
+        } else {
+            sacThaiShow = listTest.subList(0, 5);
             model.addAttribute("listSacThai", sacThaiShow);
             SacThaiSimilar sacThaiSimilar = sacThaiSimilars.get(0);
             sacThai.setMota(sacThaiSimilar.getSacThai().getMota());
-            if(sacThaiSimilar.getSimilar()<1) sacThaiService.saveSacThai(sacThai);
+            boolean check = false;
+            if (sacThaiSimilar.getSimilar() < 1) check = sacThaiService.saveSacThai(sacThai);
+            model.addAttribute("check", check);
             model.addAttribute("sacThaiOutput", sacThaiSimilar);
-            sacThaiSimilar.getSimilar();
         }
+        model.addAttribute("sacThaiInput", sacThai);
         System.err.println(listTest.size());
         for(SacThaiSimilar i : listTest) {
             System.err.println(i.getSacThai().getIdsacthai()+"    -----   "+i.getSacThai().getMota());
         }
         return "result";
-    };
+    }
+
+    ;
 
 }
